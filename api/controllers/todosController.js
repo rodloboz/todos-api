@@ -28,7 +28,7 @@ exports.read_a_todo = function(req, res) {
 };
 
 exports.update_a_todo = function(req, res) {
-  Quote.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true}, function(err, task) {
+  Todo.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true}, function(err, task) {
     if (err)
       res.send(err);
     res.json(task);
