@@ -99,7 +99,7 @@ PATCH https://shrouded-river-51602.herokuapp.com/todos/<todoId>
 **URL Parameters**
 | Field        | Type | Description|
 | -----------  |:-------------:| -----------|
-| todoId      | String | The id of the todo to delete |
+| todoId      | String | The id of the todo to update |
 
 **Request Body Fields**
 | Field        | Type | Description|
