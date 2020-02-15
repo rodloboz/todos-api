@@ -1,12 +1,13 @@
-const express     = require('express'),
-      app         = express(),
-      port        = parseInt(process.env.PORT, 10) || 8000,
-      Todo        = require('./api/models/todoModel'),
-      bodyParser  = require('body-parser');
+'use strict';
+
+const express = require('express');
+const app = express();
+const port = parseInt(process.env.PORT, 10) || 8000;
+const bodyParser = require('body-parser');
 
 // Middlewares
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));
 
@@ -22,11 +23,11 @@ app.use((req, res, next) => {
 });
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/todosdb', {
-  useNewUrlParser: true
+  useNewUrlParser: true,
 });
 
-const cors = require('cors')
-app.use(cors())
+const cors = require('cors');
+app.use(cors());
 
 const routes = require('./api/routes/todosRoutes');
 routes(app);

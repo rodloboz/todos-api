@@ -7,25 +7,25 @@ const TodoSchema = new Schema(
   {
     title: {
       type: String,
-      required: 'Please enter the title for the todo'
+      required: 'Please enter the title for the todo',
     },
     completed: {
       type: Boolean,
-      default: false
+      default: false,
     },
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
   },
   {
-    versionKey: false
-  }
+    versionKey: false,
+  },
 );
 
 TodoSchema.pre('save', next => {
   const now = new Date();
-  if(!this.createdAt) {
+  if (!this.createdAt) {
     this.createdAt = now;
   }
   next();

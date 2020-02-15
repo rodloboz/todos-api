@@ -8,9 +8,12 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "pretest": "eslint --ignore-path .gitignore ."
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-strongloop": "^2.1.0",
     "nodemon": "^2.0.2"
   },
   "dependencies": {
