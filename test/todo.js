@@ -104,7 +104,7 @@ describe('Todos', () => {
     });
   });
 
-  describe('DELETE todos/:id', () => {
+  describe('DELETE /todos/:id', () => {
     it('it should DELETE a todo given the id', (done) => {
       const todo = new Todo({ title: 'title'});
       todo.save((_err, todo) => {
@@ -118,6 +118,22 @@ describe('Todos', () => {
             done();
           });
       });
+    });
+  });
+
+  describe('DELETE /todos', () => {
+    it('it should DELETE a todo given the id', (done) => {
+      Todo.insertMany([{ title: 'title '}, { title: 'title' }]);
+      chai.request(server)
+        .delete('/todos')
+        .end((_err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('ok').eql(1);
+          res.body.should.have.property('n').eql(2);
+          res.body.should.have.property('deletedCount').eql(2);
+          done();
+        });
     });
   });
 });
