@@ -1,46 +1,57 @@
 'use strict';
-const mongoose = require('mongoose'),
-  Todo = mongoose.model('Todo');
 
-exports.list_all_todos = function(req, res) {
-  Todo.find({}, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
+const mongoose  = require('mongoose'),
+      Todo      = mongoose.model('Todo');
+
+exports.getTodos = function(req, res) {
+  Todo.find({}, (err, todos) => {
+    if (err) res.send(err);
+    res.json(todos);
   });
 };
 
-exports.create_a_todo = function(req, res) {
-  const new_todo = new Todo(req.body);
-  new_todo.save(function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
+exports.createTodo = function(req, res) {
+  const newTodo = new Todo(req.body);
+  // console.log(newTodo.save())
+  newTodo.save((err, todo) => {
+    if (err) res.send(err);
+    res.json(todo)
   });
 };
 
-exports.read_a_todo = function(req, res) {
-  Todo.findById(req.params.todoId, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
+exports.getTodo = function(req, res) {
+  Todo.findById(req.params.todoId, (err, todo) => {
+    if (err) res.send(err);
+    res.json(todo);
   });
 };
 
-exports.update_a_todo = function(req, res) {
-  Todo.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true}, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
+exports.updateTodo = function(req, res) {
+  Todo.findOneAndUpdate(
+    {_id: req.params.todoId},
+    req.body,
+    { new: true },
+    (err, todo) => {
+    if (err) res.send(err);
+    res.json(todo);
+    }
+  );
+};
+
+exports.deleteTodo = function(req, res) {
+  Todo.remove(
+    { _id: req.params.todoId },
+    (err, result) => {
+    if (err) res.send(err);
+    res.json(result);
   });
 };
 
-exports.delete_a_todo = function(req, res) {
-  Todo.remove({
-    _id: req.params.todoId
-  }, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json({ message: 'Todo successfully deleted' });
-  });
-};
+exports.batchDelete = function(req, res) {
+  Todo.collection.deleteMany(
+    (err, result) => {
+      if (err) res.send(err);
+      res.json(result)
+    }
+  )
+}

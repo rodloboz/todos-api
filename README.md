@@ -20,15 +20,13 @@ GET https://shrouded-river-51602.herokuapp.com/todos
         "completed": false,
         "_id": "5e4262cc8de5a600044b3ff2",
         "title": "Create Express.js API",
-        "createdDate": "2020-02-11T08:16:12.462Z",
-        "__v": 0
+        "createdAt": "2020-02-11T08:16:12.462Z",
     },
     {
         "completed": true,
         "_id": "5e4264508de5a600044b3ff3",
         "title": "OOP in Ruby",
-        "createdDate": "2020-02-11T08:22:40.415Z",
-        "__v": 0
+        "createdAt": "2020-02-11T08:22:40.415Z",
     }
 ]
 ```
@@ -53,8 +51,7 @@ GET https://shrouded-river-51602.herokuapp.com/todos/<todoId>
     "completed": true,
     "_id": "5e4264508de5a600044b3ff3",
     "title": "OOP in Ruby",
-    "createdDate": "2020-02-11T08:22:40.415Z",
-    "__v": 0
+    "createdAt": "2020-02-11T08:22:40.415Z",
 }
 ```
 
@@ -82,8 +79,7 @@ The data to be inserted has to be provided as a JSON-Object.
     "completed": true,
     "_id": "5e4264508de5a600044b3ff3",
     "title": "OOP in Ruby",
-    "createdDate": "2020-02-11T08:22:40.415Z",
-    "__v": 0
+    "createdAt": "2020-02-11T08:22:40.415Z",
 }
 ```
 
@@ -115,8 +111,7 @@ The data to be inserted has to be provided as a JSON-Object.
     "completed": false,
     "_id": "5e4262cc8de5a600044b3ff2",
     "title": "OOP in Ruby",
-    "createdDate": "2020-02-11T08:16:12.462Z",
-    "__v": 0
+    "createdAt": "2020-02-11T08:16:12.462Z",
 }
 ```
 
@@ -137,6 +132,8 @@ DELETE https://shrouded-river-51602.herokuapp.com/todos/<todoId>
 **Response**
 ```
 {
-    "message": "Todo successfully deleted"
+    "n": 1,
+    "ok": 1,
+    "deletedCount": 1
 }
 ```
