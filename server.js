@@ -24,6 +24,8 @@ app.use((req, res, next) => {
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/todosdb', {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const cors = require('cors');

@@ -12,7 +12,6 @@ exports.getTodos = function(req, res) {
 
 exports.createTodo = function(req, res) {
   const newTodo = new Todo(req.body);
-  // console.log(newTodo.save())
   newTodo.save((err, todo) => {
     if (err) res.send(err);
     res.json(todo);
@@ -39,7 +38,7 @@ exports.updateTodo = function(req, res) {
 };
 
 exports.deleteTodo = function(req, res) {
-  Todo.remove(
+  Todo.deleteOne(
     { _id: req.params.todoId },
     (err, result) => {
       if (err) res.send(err);
@@ -48,7 +47,7 @@ exports.deleteTodo = function(req, res) {
 };
 
 exports.batchDelete = function(req, res) {
-  Todo.collection.deleteMany(
+  Todo.deleteMany(
     (err, result) => {
       if (err) res.send(err);
       res.json(result);
