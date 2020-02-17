@@ -5,6 +5,8 @@ const app = express();
 const port = parseInt(process.env.PORT, 10) || 8000;
 const bodyParser = require('body-parser');
 
+require('./api/models/todoModel');
+
 // Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

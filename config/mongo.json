@@ -4,7 +4,7 @@
     "host": "localhost"
   },
   "test": {
-    "database": "ttodos_test",
+    "database": "todos_test",
     "host": "localhost"
   },
   "production": {
